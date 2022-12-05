@@ -22,6 +22,9 @@ export const environment = {
   },
   API: {
       backend: 'http://stagechat.svil.intellitronika.com'
+    },
+  recaptcha: {
+    siteKey: '6LdA7FcjAAAAAMyL0X_erT301CEdYBA3GztQPb4F',
     }
 };
 

@@ -1,5 +1,5 @@
 <!-- background-image city -->
-<div class="container"><img class="bg background" src="../../../../assets/images/dronecerchio.jpg" />
+<div class="container" style="display: flex; justify-content: center; align-items:center;"><img class="bg background" src="../../../../assets/images/dronecerchio.jpg" />
   <div class="container-form">
 
     <div class="message">
@@ -31,8 +31,11 @@
             <h1>Login</h1>
           </div>
           <div>
-            <span style="font-size: 70%; color: rgba(177, 174, 174, 0.932);">Immetti le tue credenziali</span>
+            <span style="font-size: 70%; color: rgba(177, 174, 174, 0.932);">Inserisi le tue credenziali</span>
           </div>
+          <ion-row style="display: flex; justify-content: center;">
+            <ion-icon style="font-size: 120%;" name="caret-down-sharp"></ion-icon>
+          </ion-row>
         </div>
 
         <form class="form-card" [formGroup]="login" (submit)="auth.login(login.value)">
@@ -46,6 +49,9 @@
         </form>
         <ion-item *ngIf="auth.error" color='danger' slot="error"> {{auth.errorMessage}} </ion-item>
       </div>
+      <!-- <form [formGroup]="aFormGroup">
+        <ngx-recaptcha2 #captchaElem [siteKey]="siteKey"></ngx-recaptcha2>
+      </form> -->
     </div>
   </div>
 

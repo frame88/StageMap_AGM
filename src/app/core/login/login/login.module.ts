@@ -8,13 +8,18 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 
+//reCAPTCHA
+import { NgxCaptchaModule } from 'ngx-captcha';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCaptchaModule
   ],
   declarations: [LoginPage]
 })

@@ -14,7 +14,8 @@ import { LoginPageModule } from './core/login/login/login.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NuovapaginaPageModule } from './nuovapagina/nuovapagina.module';
 import { FormsModule } from '@angular/forms';
-
+//reCAPTCHA
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   connectOnCreate: false,
@@ -31,7 +32,8 @@ const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     LoginPageModule,
     HttpClientModule,
     NuovapaginaPageModule,
-    FormsModule
+    FormsModule,
+    NgxCaptchaModule
     ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

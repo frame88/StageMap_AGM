@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular/providers/nav-controller';
 import { AuthService } from 'src/app/core/login/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,23 +10,30 @@ import { AuthService } from 'src/app/core/login/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit{
-
   login: FormGroup = this.fb.group({
     user: ['', Validators.required],
     pass: ['', Validators.required]
   });
 
+  protected aFormGroup: FormGroup;
+
+
   constructor(
     private fb: FormBuilder,
     public auth: AuthService,
-    private route: Router
+    private route: Router,
+    private formBuilder: FormBuilder
   ) {
 
   }
   ngOnInit(): void {
 
-      if(this.auth.isLogged()){
-        this.route.navigateByUrl('/nuovapagina/', {replaceUrl : true});
-      }
+    if(this.auth.isLogged()){
+      this.route.navigateByUrl('/nuovapagina/', {replaceUrl : true});
+    };
+
+    this.aFormGroup = this.formBuilder.group({
+      recaptcha: ['', Validators.required]
+    });
   }
 }
