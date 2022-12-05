@@ -1,0 +1,52 @@
+<!-- background-image city -->
+<div class="container"><img class="bg background" src="../../../../assets/images/dronecerchio.jpg" />
+  <div class="container-form">
+
+    <div class="message">
+      <div class="company-name" style="text-align: start;">
+        <p id="company-name">Intellitronika</p>
+      </div>
+      <div style="cursor: pointer;">
+        <p>
+          <ion-icon name="navigate"></ion-icon> Viale dell'Oceano Atlantico, 182, 00144 Romazz
+        </p>
+        <p>
+          <ion-icon name="call"></ion-icon> 06 5427 8301
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- login card -->
+  <div style="position: absolute; z-index: 10000; " *ngIf="!auth.isLogged()">
+    <div class="container-form">
+      <div
+        style="background-color: rgba(0, 0, 0, 0.788); display: flex; justify-content: center; align-items: center; flex-direction: column;"
+        class="login-card">
+        <div style="padding-top: 1em;">
+          <img id="logo" src="../../../../assets/images/intellitronika-symbol.svg" alt="logo intellitronika">
+        </div>
+        <div style="text-align: center; padding-bottom: 3em;">
+          <div>
+            <h1>Login</h1>
+          </div>
+          <div>
+            <span style="font-size: 70%; color: rgba(177, 174, 174, 0.932);">Immetti le tue credenziali</span>
+          </div>
+        </div>
+
+        <form class="form-card" [formGroup]="login" (submit)="auth.login(login.value)">
+          <label for="user">Nome Utente:</label>
+          <ion-input type="text" formControlName="user" name="user" id="user" placeholder="Nome utente"></ion-input>
+          <label for="user">Password:</label>
+          <ion-input type="password" formControlName="pass" name="pass" id="pass" placeholder="Password"></ion-input>
+          <ion-row style="display: flex; justify-content: end; margin-top: 10px;">
+            <ion-button type="submit" [disabled]="login.invalid">entra</ion-button>
+          </ion-row>
+        </form>
+        <ion-item *ngIf="auth.error" color='danger' slot="error"> {{auth.errorMessage}} </ion-item>
+      </div>
+    </div>
+  </div>
+
+</div>
