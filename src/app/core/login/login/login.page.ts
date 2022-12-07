@@ -28,13 +28,13 @@ export class LoginPage implements OnInit{
 
   }
   ngOnInit(): void {
+    this.aFormGroup = this.formBuilder.group({
+      recaptcha: ['', Validators.required]
+    });
 
     if(this.auth.isLogged()){
       this.route.navigateByUrl('/nuovapagina', {replaceUrl : true});
     };
 
-    this.aFormGroup = this.formBuilder.group({
-      recaptcha: ['', Validators.required]
-    });
   }
 }
