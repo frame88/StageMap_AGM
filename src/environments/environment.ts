@@ -25,8 +25,11 @@ export const environment = {
   },
   recaptcha: {
     siteKey: '6LdA7FcjAAAAAMyL0X_erT301CEdYBA3GztQPb4F',
+  },
+  googleAgm: {
+    MapsKey: 'AIzaSyDMgwrW11u3Jyn9A-xWWukvPDMN8c33N_I',
   }
-  };
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

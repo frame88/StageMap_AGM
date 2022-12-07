@@ -17,6 +17,9 @@ import { FormsModule } from '@angular/forms';
 //reCAPTCHA
 import { NgxCaptchaModule } from 'ngx-captcha';
 
+//agm
+import { AgmCoreModule } from '@agm/core';
+
 const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   connectOnCreate: false,
 };
@@ -33,7 +36,7 @@ const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     HttpClientModule,
     NuovapaginaPageModule,
     FormsModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
     ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

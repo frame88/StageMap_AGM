@@ -5,6 +5,18 @@
     </div>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <agm-map
+    style="height: 100%;"
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="zoom">
+    <agm-marker
+      [latitude]="lat"
+      [longitude]="lng">
+    </agm-marker>
+  </agm-map>
+</ion-content>
 
 
 

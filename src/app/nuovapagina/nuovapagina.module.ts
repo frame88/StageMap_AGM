@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { NuovapaginaPageRoutingModule } from './nuovapagina-routing.module';
 
 import { NuovapaginaPage } from './nuovapagina.page';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { NuovapaginaPage } from './nuovapagina.page';
     FormsModule,
     IonicModule,
     NuovapaginaPageRoutingModule,
-
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDMgwrW11u3Jyn9A-xWWukvPDMN8c33N_I'
+    })
   ],
   declarations: [
     NuovapaginaPage,

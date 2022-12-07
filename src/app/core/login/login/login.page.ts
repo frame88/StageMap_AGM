@@ -10,13 +10,14 @@ import { AuthService } from 'src/app/core/login/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit{
+  siteKey = '6LdA7FcjAAAAAMyL0X_erT301CEdYBA3GztQPb4F';
+  theme = 'dark';
   login: FormGroup = this.fb.group({
     user: ['', Validators.required],
     pass: ['', Validators.required]
   });
 
   protected aFormGroup: FormGroup;
-
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +30,7 @@ export class LoginPage implements OnInit{
   ngOnInit(): void {
 
     if(this.auth.isLogged()){
-      this.route.navigateByUrl('/nuovapagina/', {replaceUrl : true});
+      this.route.navigateByUrl('/nuovapagina', {replaceUrl : true});
     };
 
     this.aFormGroup = this.formBuilder.group({
