@@ -13,8 +13,9 @@ export class LoginPage implements OnInit{
   siteKey = '6LdA7FcjAAAAAMyL0X_erT301CEdYBA3GztQPb4F';
   theme = 'dark';
   login: FormGroup = this.fb.group({
+    recaptcha: ['', Validators.required],
     user: ['', Validators.required],
-    pass: ['', Validators.required],
+    pass: ['', Validators.required]
   });
 
   protected aFormGroup: FormGroup;
