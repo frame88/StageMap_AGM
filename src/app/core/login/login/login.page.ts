@@ -14,7 +14,7 @@ export class LoginPage implements OnInit{
   theme = 'dark';
   login: FormGroup = this.fb.group({
     user: ['', Validators.required],
-    pass: ['', Validators.required]
+    pass: ['', Validators.required],
   });
 
   protected aFormGroup: FormGroup;
