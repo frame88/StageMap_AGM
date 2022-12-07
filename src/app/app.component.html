@@ -2,7 +2,7 @@
   <ion-split-pane contentId="main-content" [disabled]="!auth.isLogged()">
     <ion-menu contentId="main-content" color="tertiary" type="overlay">
       <ion-content>
-        <ion-list lines="none" style=" background-color: rgba(0, 255, 213, 0.37); border-radius: 15px;">
+        <!-- <ion-list lines="none" style=" background-color: rgba(0, 255, 213, 0.37); border-radius: 15px;">
           <ion-list-header style="border-radius: 15px; margin: 0; padding: 0; padding-left: 1em;">
             </ion-list-header>
 
@@ -10,15 +10,21 @@
               <ion-item routerDirection="root"  lines="none" detail="false" routerLinkActive="selected" class="online-users">
               </ion-item>
             </ion-menu-toggle>
-          </ion-list>
+          </ion-list> -->
+        <ion-item>
+          <ion-segment value="default">
+            <ion-segment-button value="default">
+              <ion-label>Utenti online</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="segment">
+              <ion-label>Segnaposti</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-item>
       </ion-content>
-      <ion-item class="user-info ion-margin-bottom">
-        <div style="width: 100%; display: flex; justify-content: end;" class="ion-padding-top ion-no-margin ">
-          <span id="esci" slot="end" (click)="auth.logout()">Esci</span>
-        </div>
-      </ion-item>
+      <ion-button expand="block" class="ion-margin" color="danger" (click)="auth.logout()">ESCI</ion-button>
 
     </ion-menu>
-    <ion-router-outlet  id="main-content"></ion-router-outlet>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>

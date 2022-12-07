@@ -27,5 +27,16 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+//scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.745);
+  border-radius: 10px;
+}
 
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}

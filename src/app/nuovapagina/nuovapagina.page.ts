@@ -16,9 +16,9 @@ import { AuthService } from '../core/login/auth.service';
 export class NuovapaginaPage implements OnInit {
 
   products: Products[] = [];
-  lat = 42;
-  lng = 12;
-  zoom = 10;
+  lat = 41.9099856;
+  lng = 12.4855817;
+  zoom = 12;
   constructor(
     private http: HttpClient,
     private auth: AuthService,

@@ -31,7 +31,7 @@
             <h1>Login</h1>
           </div>
           <div>
-            <span style="font-size: 70%; color: rgba(177, 174, 174, 0.932); letter-spacing: 2px;">Inserisi le tue credenziali</span>
+            <span style="font-size: 70%; color: rgba(177, 174, 174, 0.932); letter-spacing: 2px;">Inserisci le tue credenziali</span>
           </div>
           <ion-row style="display: flex; justify-content: center;">
             <ion-icon style="font-size: 120%;" name="caret-down-sharp"></ion-icon>
@@ -45,18 +45,18 @@
             <ion-input type="text" formControlName="user" name="user" id="user" placeholder="Nome utente"></ion-input>
             <label for="user">Password:</label>
             <ion-input type="password" formControlName="pass" name="pass" id="pass" placeholder="Password"></ion-input>
-            <ion-row style="display: flex; justify-content: center; margin-top: 2em;">
+             <!-- <ion-row style="display: flex; justify-content: center; margin-top: 2em;">
               <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha"></ngx-recaptcha2>
-            </ion-row>
+            </ion-row>  -->
             <ion-row style="display: flex; justify-content: center; margin-top: 10px;">
-              <ion-button type="submit" [disabled]="!login.valid">entra</ion-button>
+              <ion-button type="submit" [disabled]="!login.valid" style="text-transform: uppercase; letter-spacing: 1px;">entra</ion-button>
             </ion-row>
           </form>
         <ion-item *ngIf="auth.error" color='danger' slot="error"> {{auth.errorMessage}} </ion-item>
       </div>
-      <!-- <form [formGroup]="aFormGroup">
-        <ngx-recaptcha2 #captchaElem [siteKey]="siteKey"></ngx-recaptcha2>
-      </form> -->
+      <form [formGroup]="aFormGroup">
+        <!-- <ngx-recaptcha2 #captchaElem [siteKey]="siteKey"></ngx-recaptcha2> -->
+      </form>
     </div>
   </div>
 
