@@ -28,6 +28,9 @@ export const environment = {
   },
   googleAgm: {
     MapsKey: 'AIzaSyDMgwrW11u3Jyn9A-xWWukvPDMN8c33N_I',
+  },
+  mapbox: {
+    accessToken: 'pk.eyJ1IjoiZnJhbmNvbWFnbm8iLCJhIjoiY2xiZHZieDczMDU4cTNucG0zYzNzYWltNSJ9.ubmaNUnBw66eoKQ-DulG5g'
   }
 };
 

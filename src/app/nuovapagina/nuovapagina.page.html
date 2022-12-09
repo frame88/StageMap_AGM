@@ -1,13 +1,25 @@
+<!-- RICERCA INDIRIZZO  -->
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Stage MAP
-    <ion-icon name="map-outline" style="margin-left: 5px;"></ion-icon>
-</ion-title>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-searchbar placeholder="Cerca su Leuzzi's maps"></ion-searchbar>
-  </ion-toolbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div style="position: relative;">
+          <ion-searchbar debounce=500 (ionChange)="search($event)" [value]="selectedAddress"></ion-searchbar>
+          <div style="position: absolute; width: 100%; z-index: 999;">
+            <ion-list lines="none" *ngIf="addresses.length > 0" style="border-radius: 0px 0px 15px 15px; padding-bottom: 5px;">
+              <ion-item button *ngFor="let address of addresses" (click)="onSelect(address)">
+                <ion-icon style="margin-right: 5px; color: rgb(158, 255, 94);" name="navigate-circle-outline"></ion-icon>
+                  {{ address }}
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-header>
+
+<!-- MAPPA -->
 <ion-content>
   <agm-map
     style="height: 100%;"
@@ -20,6 +32,4 @@
     </agm-marker>
   </agm-map>
 </ion-content>
-
-
 
