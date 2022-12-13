@@ -9,6 +9,8 @@ import { AuthService } from '../core/login/auth.service';
 
 import { MapBoxService } from '../service/map-box.service';
 import { Features } from '../models/IFeature';
+
+import * as mapboxgl from 'mapbox-gl';
 @Component({
   selector: 'app-nuovapagina',
   templateUrl: './nuovapagina.page.html',
@@ -45,6 +47,7 @@ export class NuovapaginaPage {
           this.lng = this.newlng;
           console.log('LNG: ', this.newlng, 'LAT: ', this.newlat);
           this.addresses = features.map(feat => feat.place_name);
+          console.log(this.addresses);
         });
       } else {
         this.addresses = [];

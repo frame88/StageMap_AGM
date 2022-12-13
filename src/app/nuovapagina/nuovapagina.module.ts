@@ -24,3 +24,5 @@ import { AgmCoreModule } from '@agm/core';
   ]
 })
 export class NuovapaginaPageModule {}
+
+

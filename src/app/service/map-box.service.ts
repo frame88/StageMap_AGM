@@ -26,7 +26,7 @@ export class MapBoxService {
 
   search_word(query: string) {
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
-    return this.http.get(url + query + '.json?types=address&access_token='
+    return this.http.get(url + query + '.json?proximity=ip&types=address&access_token='
     + environment.mapbox.accessToken)
     .pipe(map((res: MapboxOutput) => {
       return res.features;
