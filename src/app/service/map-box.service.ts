@@ -5,10 +5,11 @@ import { Injectable } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { Features } from '../models/IFeature';
 
 export interface MapboxOutput {
   attribution: string;
-  features: Feature[];
+  features: Features;
   query: [];
 }
 
@@ -29,6 +30,7 @@ export class MapBoxService {
     + environment.mapbox.accessToken)
     .pipe(map((res: MapboxOutput) => {
       return res.features;
+      //console.log(res); Risultati di ricerca
     }));
   }
 

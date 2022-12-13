@@ -4,10 +4,10 @@
     <ion-row>
       <ion-col>
         <div style="position: relative;">
-          <ion-searchbar debounce=500 (ionChange)="search($event)" [value]="selectedAddress"></ion-searchbar>
+          <ion-searchbar debounce=500 (ionChange)="search($event)" [value]="selectedAddress" placeholder="Cerca in Leuzzi's map"></ion-searchbar>
           <div style="position: absolute; width: 100%; z-index: 999;">
             <ion-list lines="none" *ngIf="addresses.length > 0" style="border-radius: 0px 0px 15px 15px; padding-bottom: 5px;">
-              <ion-item button *ngFor="let address of addresses" (click)="onSelect(address)">
+              <ion-item id="eddai" button *ngFor="let address of addresses" (click)="onSelect(address)" style="margin: 10px;">
                 <ion-icon style="margin-right: 5px; color: rgb(158, 255, 94);" name="navigate-circle-outline"></ion-icon>
                   {{ address }}
               </ion-item>

@@ -3,12 +3,12 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Products } from '../models/IGetAll';
 import { AuthService } from '../core/login/auth.service';
 
-import { MapBoxService, Feature } from '../service/map-box.service';
+import { MapBoxService } from '../service/map-box.service';
+import { Features } from '../models/IFeature';
 @Component({
   selector: 'app-nuovapagina',
   templateUrl: './nuovapagina.page.html',
@@ -16,9 +16,10 @@ import { MapBoxService, Feature } from '../service/map-box.service';
 })
 export class NuovapaginaPage {
 
-  products: Products[] = [];
-  lat = 41.9099856;
+  lat = 41.9011156;
   lng = 12.4855817;
+  newlat;
+  newlng;
   zoom = 12;
   constructor(
     private http: HttpClient,
@@ -34,7 +35,15 @@ export class NuovapaginaPage {
     if (searchTerm && searchTerm.length > 0) {
       this.mapboxService
         .search_word(searchTerm)
-        .subscribe((features: Feature[]) => {
+        .subscribe((features: Features) => {
+          //PARAMETRI PER SPOSTARE IL MARKER DOPO LA SCRITTURA NELLA SEARCHBAR
+          //center[0] longitudine
+          //center[1] latitudine
+          this.newlng = features[0].center[0];
+          this.newlat = features[0].center[1];
+          this.lat =  this.newlat;
+          this.lng = this.newlng;
+          console.log('LNG: ', this.newlng, 'LAT: ', this.newlat);
           this.addresses = features.map(feat => feat.place_name);
         });
       } else {
@@ -46,6 +55,4 @@ export class NuovapaginaPage {
     this.selectedAddress = address;
     this.addresses = [];
   }
-
 }
-

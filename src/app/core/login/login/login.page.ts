@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/core/login/auth.service';
 })
 export class LoginPage implements OnInit{
   siteKey = '6LdA7FcjAAAAAMyL0X_erT301CEdYBA3GztQPb4F';
-  theme = 'dark';
+  theme = 'Dark';
   login: FormGroup = this.fb.group({
     //recaptcha: ['', Validators.required],
     user: ['', Validators.required],
