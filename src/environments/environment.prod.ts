@@ -16,8 +16,7 @@ export const environment = {
     protocoll: 'wss',
     endpoint: '',
     subscriptions: {
-      message: 'stagechat/message/#',
-      status: 'stagechat/status'
+      status: 'stagemap/status'
     },
   },
   API: {

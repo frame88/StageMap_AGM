@@ -18,14 +18,25 @@ import { IAuth } from 'src/app/models/IAuth';
 import { IToken } from 'src/app/models/IToken';
 import { IUserInfo } from 'src/app/models/IUserInfo';
 
+//importazioni per mqtt
+import { MqttService, IMqttMessage } from 'ngx-mqtt';
+import { IUser } from 'src/app/models/IUser';
+import { IStatus } from 'src/app/models/IStatus';
+import { EventMqttService } from 'src/app/service/event-mqtt.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  //variabili per sottoscrizione al mqtt
+  onlineUser: IUser;
+  users: string[]= [];
+  sideMenuUsers: IUser[] = [];
 
-// Variabili User
-  data: IAuth | undefined ;
+
+  // Variabili User
+  data: IAuth | undefined;
   token: string;
   userData: IUserInfo = {
     token: '',
@@ -58,7 +69,8 @@ export class AuthService {
   constructor(
     private http: HttpClient, //servizio per comunicare backend con frontend
     private router: Router, //servizio per navigare tra le diverse view di angular
-    private navCtrl: NavController //servizio analogo a quello sopra ma di ionic
+    private navCtrl: NavController, //servizio analogo a quello sopra ma di ionic
+    private mqttService: EventMqttService
     ){}
 
   login({user, pass }: {user: string; pass: string}) {
@@ -147,15 +159,52 @@ export class AuthService {
     this.navCtrl.navigateRoot('/login', { animated: true, animationDirection: 'forward' });
   }
 
-  // refreshToken(token: string, refreshToken: string) {
+  //inizializzazione del servizio mqtt
+  mqttSub(){
 
-  //   this.http.post<IRefresh>(`${environment.API.backend}/api/Auth/RefreshToken`, {token, refreshToken})
-  //   .subscribe((res: IRefresh) => {
+    this.userData = JSON.parse(localStorage.getItem('user'));
 
-  //   }
-  //   )
+    // Sottoscrizione STATUS
+    this.subscriptions.push(
+      this.mqttService.topic('stagemap/status').subscribe((resp: IMqttMessage) => {
 
-//}
+        const rtn = resp.payload.toString();
+        if(rtn !== ''){
+
+          const dataStatus: IStatus = JSON.parse(rtn);
+
+          if (!this.users.includes(dataStatus.user) && dataStatus.user !== this.user){
+
+            const onlineAt= new Date(dataStatus.timestamp).getTime();
+
+            this.users.push(dataStatus.user);
+
+            this.sideMenuUsers.push({
+              user: dataStatus.user,
+              url:`/chat/${dataStatus.user}`,
+              icon: 'mail',
+              timestamp: onlineAt,
+              notifications: null
+            });
+
+            localStorage.setItem('usersOnline', JSON.stringify(this.users));
+
+            localStorage.setItem('menuUsers', JSON.stringify(this.sideMenuUsers));
+
+          }
+          else if (this.users.includes(dataStatus.user) ){
+
+            const time = new Date(dataStatus.timestamp);
+
+            for(const element of this.sideMenuUsers){
+
+              if(element.user === dataStatus.user){
+                element.timestamp = time.getTime();
+              }
+            }
+          }
+        }
+      })
+    );
+  }
 }
-
-

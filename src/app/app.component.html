@@ -1,7 +1,7 @@
 <ion-app>
   <ion-split-pane contentId="main-content" [disabled]="!auth.isLogged()">
     <ion-menu contentId="main-content" color="tertiary" type="overlay">
-      <ion-content>
+      <!-- <ion-content>
         <ion-list lines="none" style="background-color: #85FFBD; background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);">
           <ion-list-header style="padding-bottom: 0; color: black; position: relative;">
             Stage MAP <ion-icon style="margin-left: 5px;" name="map-outline"></ion-icon>
@@ -20,7 +20,24 @@
             </ion-segment-button>
           </ion-segment>
         </ion-item>
-      </ion-content>
+      </ion-content> -->
+      
+      <!-- visualizzazione utenti online -->
+      <ion-menu-toggle auto-hide="false" *ngFor="let p of auth.sideMenuUsers; let i = index">
+        <ion-item routerDirection="root" lines="none" detail="false" routerLinkActive="selected" class="online-users">
+          <ion-avatar slot="start">
+            <img alt="img profile associate" src="https://i.pravatar.cc/300" />
+          </ion-avatar>
+          <ion-label>{{ p.user }}</ion-label>
+          <small *ngIf="this.auth.now - this.auth.sideMenuUsers[i].timestamp >= 5000">Ultimo accesso alle
+            {{p.timestamp | date:'HH:mm'}}</small>
+          <small *ngIf="this.auth.now - this.auth.sideMenuUsers[i].timestamp <= 5000">
+            <div id="shot-associate"></div>
+          </small>
+          <ion-badge *ngIf="p.notifications">{{p.notifications}}</ion-badge>
+        </ion-item>
+      </ion-menu-toggle>
+
       <ion-button expand="block" class="ion-margin" color="danger" (click)="auth.logout()">ESCI</ion-button>
 
     </ion-menu>

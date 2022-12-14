@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  name: 'Ionic Chat',
+  name: 'Stage Map',
   middleware: 'api/',
 
   MQTT: {
@@ -16,12 +16,11 @@ export const environment = {
       protocoll: 'wss',
       endpoint: '',
       subscriptions: {
-        message: 'stagechat/message/#',
-        status: 'stagechat/status'
+        status: 'stagemap/status'
       },
     },
   API: {
-    backend: 'http://stagechat.svil.intellitronika.com'
+    backend: 'http://.stagechatsvil.intellitronika.com'
   },
   recaptcha: {
     siteKey: '6LdA7FcjAAAAAMyL0X_erT301CEdYBA3GztQPb4F',
