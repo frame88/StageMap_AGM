@@ -23,6 +23,7 @@ export class NuovapaginaPage {
   newlat;
   newlng;
   zoom = 12;
+
   constructor(
     private http: HttpClient,
     private auth: AuthService,
@@ -43,7 +44,7 @@ export class NuovapaginaPage {
           //center[1] latitudine
           this.newlng = features[0].center[0];
           this.newlat = features[0].center[1];
-          this.lat =  this.newlat;
+          this.lat = this.newlat;
           this.lng = this.newlng;
           console.log('LNG: ', this.newlng, 'LAT: ', this.newlat);
           this.addresses = features.map(feat => feat.place_name);
@@ -52,10 +53,11 @@ export class NuovapaginaPage {
       } else {
         this.addresses = [];
       }
-  }
+    }
 
   onSelect(address: string) {
     this.selectedAddress = address;
     this.addresses = [];
+    console.log('ciao');
   }
 }

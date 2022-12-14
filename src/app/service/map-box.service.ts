@@ -30,7 +30,7 @@ export class MapBoxService {
     + environment.mapbox.accessToken)
     .pipe(map((res: MapboxOutput) => {
       return res.features;
-      //console.log(res); Risultati di ricerca
+      //console.log(res); //Risultati di ricerca
     }));
   }
 
